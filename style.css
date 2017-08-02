@@ -1,0 +1,37 @@
+#memory_board {
+ background:#DADADA;
+ width: 80%;
+ /*height: 80px;*/
+ /*padding: 24px;*/
+ margin: 0px auto;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+#memory_board > div {
+ background: #03487B;
+ /*height: 25%;*/
+ margin: 5px;
+ /*padding: 10px;*/
+ cursor: pointer;
+ /*text-align: center;*/
+ /*flex: 1;*/
+ border: 3px solid black;
+ border-radius: 10px;
+ background-clip: inherit;
+
+}
+
+#memory_board > div > h1 {
+  font-size: 64px;
+  /*height: 50px;*/
+  font-family: sans-serif;
+  color: white;
+  /*visibility: hidden;*/
+}
+
+#memory_board > div > img {
+  /*clip: rect(10px, 10px, 10px, 10px);*/
+  border-radius: 6px;
+}
