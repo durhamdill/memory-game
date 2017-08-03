@@ -2,55 +2,93 @@
 
 let pairList = ["images/img00.png","images/img00.png","images/img01.png","images/img01.png", "images/img03.png", "images/img03.png","images/img04.png","images/img04.png", "images/img05.png", "images/img05.png"];
 
-
-// create board for new game
-
 // randomize pairList; function found at StackOverflow: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
-// function shuffleArray(array) {
-//     for (var i = array.length - 1; i > 0; i--) {
-//         var j = Math.floor(Math.random() * (i + 1));
-//         var temp = array[i];
-//         array[i] = array[j];
-//         array[j] = temp;
-//     }
-//     return array;
-// }
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
 
+// create board for new game (easy version)
 
-function newBoard() {
-  // let randomPairList = shuffleArray(pairList);
+let card;
+let image;
+let randomPairList;
+
+function newBoardEasy() {
+  randomPairList = shuffleArray(pairList);
   for (let array=0; array<pairList.length; array++) {
-    let card = document.createElement("div");
-    let image = document.createElement("img");
+    card = document.createElement("div");
+    image = document.createElement("img");
     image.setAttribute("src", pairList[array]);
-    // let cardData = document.createTextNode(randomPairList[array]);
-    // card.setAttribute("class", "card");
+    card.setAttribute("class", "card");
     // card.setAttribute("id", "card" + [array]);
-    // data.setAttribute("class", "cardtext");
-    // data.appendChild(cardData);
+    image.setAttribute("class", "image");
     card.appendChild(image);
     let board = document.getElementById("memory_board");
     board.appendChild(card);
 
-    // this following line is supposed to start the cardData as hidden, but the side effect is the flexboxes lose their height without the content; also tried display: none
     // cardText.classlist.toggle('hidden');
-
+    image.classList.add("hideImage");
   }
-
-
 }
 
-newBoard();
+newBoardEasy();
 
-let cardText = document.getElementsByClassName("cardtext");
-let cardDiv = document.getElementsByClassName("card");
+// create click event on cards
 
-function showCard(){
-  cardText.classlist.toggle('visible');
+var theParent = document.querySelector("#memory_board");
+theParent.addEventListener("click", showImage, false);
+
+let imageSelect = getElementsByClassName("image");
+
+function showImage(e) {
+    if (e.target !== e.currentTarget) {
+        var clickedItem = e.target.id;
+        image.classList.remove("hideImage");
+        image.classList.add("showImage");
+        // alert("Hello " + clickedItem);
+    }
+    e.stopPropagation();
 }
 
-cardDiv.addEventListener("click", showCard);
+// let showCard = function() {
+//   image.classList.remove("hideImage");
+//   image.classList.add("showImage");
+// }
+//
+// card.addEventListener("click", showCard);
+//
+//
+// <script>
+//   document.getElementById("test").addEventListener("click", function( event ) {
+//     // display the current click count inside the clicked div
+//     event.target.textContent = "click count: " + event.detail;
+//   }, false);
+// </script>
+//
+// document.getElementById('card').addEventListener("click", function(event)) {
+//   event.target.
+// }
+// image.classList.remove("hideImage");
 
-
-// https://davidwalsh.name/css-flip
+// // let cardImage = document.getElementsByClassName();
+// let cardDiv = document.querySelector("#memory_board");
+//
+//
+// function showCard(e){
+//
+//   e.target.classList.remove("hideImage");
+//   e.target.classList.add("showImage");
+//   console.log("click");
+// }
+//
+// cardDiv.addEventListener("click", showCard, false);
+//
+//
+// // https://davidwalsh.name/css-flip

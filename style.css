@@ -1,3 +1,19 @@
+/*font-family: 'Chewy', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Slackey', cursive;*/
+
+body {
+  background:#DADADA;
+}
+
+.header {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.5em;
+  /*text-transform: uppercase;*/
+}
+
 #memory_board {
  background:#DADADA;
  width: 80%;
@@ -11,7 +27,7 @@
 
 #memory_board > div {
  background: #03487B;
- /*height: 25%;*/
+ height: 180px;
  margin: 5px;
  /*padding: 10px;*/
  cursor: pointer;
@@ -34,4 +50,12 @@
 #memory_board > div > img {
   /*clip: rect(10px, 10px, 10px, 10px);*/
   border-radius: 6px;
+}
+
+.hideImage{
+  visibility: hidden;
+}
+
+.showImage {
+  visibility: visible;
 }
