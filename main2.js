@@ -20,29 +20,44 @@ let card;
 let image;
 let randomPairList;
 
-let flipCard = function() {
-  this.classList.remove("class", "hideImage");
-  this.classList.add("class", "showImage");
-  console.log(this.id);
-}
+let playerHand = [];
+let playerScore = 0;
 
-// let newBoardEasy = () => {
-//   randomPairList = shuffleArray(pairList);
-//   for (let array=0; array<pairList.length; array++){
-//
-//     let gameCard = `
-//       <div class="card">
-//         <img class="image" src="${randomPairList[array]}">
-//       </div>
-//     `;
-//
-//     document.querySelector('#memory_board').innerHTML += gameCard;
-//
-//     let image = document.querySelector(".card");
-//     image.classList.add("hideImage");
-//   }
-//
-// }
+
+let checkFlipCard = function() {
+  if (playerHand.length===0) {
+    this.classList.remove("class", "hideImage");
+    this.classList.add("class", "showImage");
+    playerHand.push(this);
+    console.log(playerHand);
+  } else if (playerHand.length===1) {
+      this.classList.remove("class", "hideImage");
+      this.classList.add("class", "showImage");
+      playerHand.push(this);
+      console.log(playerHand);
+      setTimeout(clearHand, 500);
+    }
+    }
+
+    // console.log(playerHand);
+
+    let clearHand = function() {
+      if (playerHand[0].innerHTML===playerHand[1].innerHTML) {
+        playerScore +=2;
+        playerHand.pop();
+        // console.log(playerHand);
+        playerHand.pop();
+        // console.log(playerHand);
+        console.log(playerScore);
+      } else {
+          playerHand[0].classList.remove("class", "showImage");
+          playerHand[0].classList.add("class", "hideImage");
+          playerHand[1].classList.remove("class", "showImage");
+          playerHand[1].classList.add("class", "hideImage");
+          playerHand.pop();
+          playerHand.pop();
+          }
+    }
 
 
 function newBoardEasy() {
@@ -53,66 +68,13 @@ function newBoardEasy() {
     image = document.createElement("img");
     image.setAttribute("src", pairList[array]);
     card.setAttribute("class", "hideImage");
-    image.setAttribute("id", "image" + [array]);
+    //image.setAttribute("id", "image" + [array]);
     // image.setAttribute("class", "image");
     card.appendChild(image);
-    card.addEventListener('click', flipCard,false);
+    card.addEventListener('click', checkFlipCard,false);
     let board = document.getElementById("memory_board");
     board.appendChild(card);
   }
 }
 
 newBoardEasy();
-
-// create click event on cards
-
-// var theParent = document.querySelector("#memory_board");
-// theParent.addEventListener("click", selectCard, false);
-
-// let imageSelect = querySelectorAll(".image");
-
-// function selectCard(e) {
-//     if (e.target !== e.currentTarget) {
-//         var clickedItem = e.target.id;
-//         e.target.classList.remove("hideImage");
-//         e.target.classList.add("showImage");
-//         // alert("Hello " + clickedItem);
-//     }
-//     e.stopPropagation();
-// }
-
-// let showCard = function() {
-//   image.classList.remove("hideImage");
-//   image.classList.add("showImage");
-// }
-//
-// card.addEventListener("click", showCard);
-//
-//
-// <script>
-//   document.getElementById("test").addEventListener("click", function( event ) {
-//     // display the current click count inside the clicked div
-//     event.target.textContent = "click count: " + event.detail;
-//   }, false);
-// </script>
-//
-// document.getElementById('card').addEventListener("click", function(event)) {
-//   event.target.
-// }
-// image.classList.remove("hideImage");
-
-// // let cardImage = document.getElementsByClassName();
-// let cardDiv = document.querySelector("#memory_board");
-//
-//
-// function showCard(e){
-//
-//   e.target.classList.remove("hideImage");
-//   e.target.classList.add("showImage");
-//   console.log("click");
-// }
-//
-// cardDiv.addEventListener("click", showCard, false);
-//
-//
-// // https://davidwalsh.name/css-flip
