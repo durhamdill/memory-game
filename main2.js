@@ -1,6 +1,6 @@
 // create set of pairs for 4x4 board
 
-let pairList = ["images/img00.png","images/img00.png","images/img01.png","images/img01.png", "images/img03.png", "images/img03.png","images/img04.png","images/img04.png", "images/img05.png", "images/img05.png"];
+let pairList = ["images/img00.png","images/img00.png","images/img01.png","images/img01.png", "images/img03.png", "images/img03.png","images/img04.png","images/img04.png", "images/img05.png", "images/img05.png", "images/img06.png", "images/img06.png", "images/img07.png", "images/img07.png", "images/img08.png", "images/img08.png"];
 
 // randomize pairList; function found at StackOverflow: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
@@ -20,21 +20,45 @@ let card;
 let image;
 let randomPairList;
 
+let flipCard = function() {
+  this.classList.remove("class", "hideImage");
+  this.classList.add("class", "showImage");
+  console.log(this.id);
+}
+
+// let newBoardEasy = () => {
+//   randomPairList = shuffleArray(pairList);
+//   for (let array=0; array<pairList.length; array++){
+//
+//     let gameCard = `
+//       <div class="card">
+//         <img class="image" src="${randomPairList[array]}">
+//       </div>
+//     `;
+//
+//     document.querySelector('#memory_board').innerHTML += gameCard;
+//
+//     let image = document.querySelector(".card");
+//     image.classList.add("hideImage");
+//   }
+//
+// }
+
+
 function newBoardEasy() {
-  randomPairList = shuffleArray(pairList);
+  cards_flipped = 0;
+  let randomPairList = shuffleArray(pairList);
   for (let array=0; array<pairList.length; array++) {
     card = document.createElement("div");
     image = document.createElement("img");
     image.setAttribute("src", pairList[array]);
-    card.setAttribute("class", "card");
-    // card.setAttribute("id", "card" + [array]);
-    image.setAttribute("class", "image");
+    card.setAttribute("class", "hideImage");
+    image.setAttribute("id", "image" + [array]);
+    // image.setAttribute("class", "image");
     card.appendChild(image);
+    card.addEventListener('click', flipCard,false);
     let board = document.getElementById("memory_board");
     board.appendChild(card);
-
-    // cardText.classlist.toggle('hidden');
-    image.classList.add("hideImage");
   }
 }
 
@@ -42,20 +66,20 @@ newBoardEasy();
 
 // create click event on cards
 
-var theParent = document.querySelector("#memory_board");
-theParent.addEventListener("click", showImage, false);
+// var theParent = document.querySelector("#memory_board");
+// theParent.addEventListener("click", selectCard, false);
 
-let imageSelect = getElementsByClassName("image");
+// let imageSelect = querySelectorAll(".image");
 
-function showImage(e) {
-    if (e.target !== e.currentTarget) {
-        var clickedItem = e.target.id;
-        image.classList.remove("hideImage");
-        image.classList.add("showImage");
-        // alert("Hello " + clickedItem);
-    }
-    e.stopPropagation();
-}
+// function selectCard(e) {
+//     if (e.target !== e.currentTarget) {
+//         var clickedItem = e.target.id;
+//         e.target.classList.remove("hideImage");
+//         e.target.classList.add("showImage");
+//         // alert("Hello " + clickedItem);
+//     }
+//     e.stopPropagation();
+// }
 
 // let showCard = function() {
 //   image.classList.remove("hideImage");

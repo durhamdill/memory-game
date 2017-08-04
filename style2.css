@@ -31,36 +31,22 @@ body {
  margin: 5px;
  /*padding: 10px;*/
  cursor: pointer;
- text-align: center;
- flex-basis: 180px;
+ /*text-align: center;*/
+ /*flex: 1;*/
  border: 3px solid black;
  border-radius: 10px;
- font-family: 'Luckiest Guy', cursive;
- /*color: red;*/
- font-size: 64px;
- display: flex;
- justify-content: center;
- align-items: center;
+ background-clip: inherit;
 }
 
-/*#memory_board > div > h1 {
-  font-size: 64px;
-  /*height: 50px;*/
-  /*color: white;
-  /*visibility: hidden;*/
-}
-
-
-/*this style doesnt seem to be working*/
-/*.img {
+#memory_board > div > img {
   /*clip: rect(10px, 10px, 10px, 10px);*/
-  /*border-radius: 20px;
-}*/
-
-.hideText{
-  color: #03487B;
+  border-radius: 6px;
 }
 
-.showText {
-  color: white;
+.hideImage img{
+  visibility: hidden;
+}
+
+.showImage img {
+  visibility: visible;
 }
