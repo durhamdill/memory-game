@@ -3,22 +3,77 @@ font-family: 'Luckiest Guy', cursive;
 font-family: 'Fredoka One', cursive;
 font-family: 'Slackey', cursive;*/
 
-body {
-  background:#DADADA;
+
+
+/*----- STYLES FOR START SCREEN -----*/
+
+#start_screen h1 {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  font-size: 5em;
+  text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
 }
 
-.header {
+#start_screen h2 {
+  color: gray;
+  font-family: 'Raleway', sans-serif;
+}
+
+#start_screen {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  background: #ADCFCF;
+  position: fixed;
+  z-index: 100;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 1.2em;
+  color: gray;
+  background-color: #FFFA8E;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.game_easy {
+  position: relative;
+  z-index: 1;
+}
+
+/*------ STYLES FOR GAME BOARD ------*/
+body {
+  background:#ADCFCF;
+  margin: 0px;
+}
+
+header {
+  text-align: center;
+}
+
+#game_easy h1 {
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
-  font-size: 1.5em;
-  /*text-transform: uppercase;*/
+  font-size: 3.5em;
+  color: white;
+  text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+}
+
+#game_easy h2 {
+  background-color: #FFFA8E;
+  font-size: 1.2em;
+  font-family: 'Raleway', sans-serif;
+  padding: 5px;
 }
 
 #memory_board {
- background:#DADADA;
- width: 80%;
- /*height: 80px;*/
- /*padding: 24px;*/
+ width: 550px;
  margin: 0px auto;
  display: flex;
  flex-wrap: wrap;
@@ -27,20 +82,21 @@ body {
 
 #memory_board > div {
  background: #03487B;
- height: 180px;
+ background: url("./images/swirl_pattern.png");
+ /*background-size: cover;*/
+ background-repeat: no-repeat;
+ height: 120px;
  margin: 5px;
- /*padding: 10px;*/
  cursor: pointer;
- /*text-align: center;*/
- /*flex: 1;*/
- border: 3px solid black;
+ flex: 0 120px;
+ border: 3px solid gray;
  border-radius: 10px;
  background-clip: inherit;
 }
 
 #memory_board > div > img {
-  /*clip: rect(10px, 10px, 10px, 10px);*/
   border-radius: 6px;
+  width: 100%;
 }
 
 .hideImage img{

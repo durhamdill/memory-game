@@ -1,6 +1,17 @@
+let easyButton = document.getElementById('easy_button');
+let start_screen = document.getElementById('start_screen');
+
+
+let startEasyGame = function() {
+  document.getElementById("start_screen").style.visibility = "hidden";
+  newBoardEasy();
+}
+
+easyButton.addEventListener('click', startEasyGame, false);
+
 // create set of pairs for 4x4 board
 
-let pairList = ["images/img00.png","images/img00.png","images/img01.png","images/img01.png", "images/img03.png", "images/img03.png","images/img04.png","images/img04.png", "images/img05.png", "images/img05.png", "images/img06.png", "images/img06.png", "images/img07.png", "images/img07.png", "images/img08.png", "images/img08.png"];
+let pairList = ["images/img00.png","images/img00.png","images/img01.png","images/img01.png", "images/img02.png", "images/img02.png","images/img03.png","images/img03.png", "images/img04.png", "images/img04.png", "images/img05.png", "images/img05.png", "images/img06.png", "images/img06.png", "images/img07.png", "images/img07.png"];
 
 // randomize pairList; function found at StackOverflow: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
@@ -16,9 +27,9 @@ function shuffleArray(array) {
 
 // create board for new game (easy version)
 
-let card;
-let image;
-let randomPairList;
+// let card;
+// let image;
+// let randomPairList;
 
 let playerHand = [];
 let playerScore = 0;
@@ -49,6 +60,9 @@ let checkFlipCard = function() {
         playerHand.pop();
         // console.log(playerHand);
         console.log(playerScore);
+        if (playerScore===16) {
+          alert("You win!");
+        }
       } else {
           playerHand[0].classList.remove("class", "showImage");
           playerHand[0].classList.add("class", "hideImage");
@@ -77,4 +91,4 @@ function newBoardEasy() {
   }
 }
 
-newBoardEasy();
+// newBoardEasy();
