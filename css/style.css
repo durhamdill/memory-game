@@ -1,13 +1,15 @@
-/*font-family: 'Chewy', cursive;
-font-family: 'Luckiest Guy', cursive;
-font-family: 'Fredoka One', cursive;
-font-family: 'Slackey', cursive;*/
+/*font-family: 'Luckiest Guy', cursive;
+font-family: 'Raleway', sans-serif;*/
 
 
 
 /*----- STYLES FOR START SCREEN -----*/
 
-#start_screen h1, #win_screen h1 {
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+#start_screen h1 {
   font-family: 'Luckiest Guy', cursive;
   color: white;
   font-size: 5em;
@@ -15,9 +17,8 @@ font-family: 'Slackey', cursive;*/
   margin-bottom: 10px;
 }
 
-#start_screen h2, #win_screen p {
+#start_screen h2 {
   color: gray;
-  font-family: 'Raleway', sans-serif;
 }
 
 #start_screen img {
@@ -45,7 +46,14 @@ font-family: 'Slackey', cursive;*/
 #win_box, #lose_box {
   background-color: #ADCFCF;
   border-radius: 5px;
-  padding: 0 15px 10px 15px;
+  padding: 0 15px 30px 15px;
+  width: 400px;
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.5)
+}
+
+#win_screen p, #lose_screen p {
+  font-size: 1em;
+  margin-bottom: 30px;
 }
 
 button, a {
@@ -55,7 +63,12 @@ button, a {
   border-radius: 5px;
   margin: 5px;
   padding: 10px;
-  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  border: 2px solid #B3B3B3;
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.5)
 }
 
 #easy_button:hover, a:hover {
@@ -75,22 +88,25 @@ header {
   text-align: center;
 }
 
-#game_easy {
+/*#game_easy {
   /*visibility: hidden;*/
-}
+/*}*/
 
-#game_easy h1 {
+#game_easy h1, #win_screen h1, #lose_screen h1 {
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
   font-size: 3.5em;
   color: white;
   text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+  margin-bottom: 0;
+}
+
+#win_message, #lose_message, #game_easy h2 {
+  font-size: 1.2em;
 }
 
 #game_easy h2 {
   background-color: #FFFA8E;
-  font-size: 1.2em;
-  font-family: 'Raleway', sans-serif;
   padding: 5px;
 }
 
@@ -103,10 +119,9 @@ header {
 
 #hearts {
   padding-left: 10px;
-  font-family: 'Raleway', sans-serif;
 }
+
 #timer {
-  font-family: 'Raleway', sans-serif;
   padding-right: 10px;
 }
 
@@ -121,7 +136,6 @@ header {
 #memory_board > div {
  background: #03487B;
  background-image: url("https://durhamdill.files.wordpress.com/2017/08/swirl_pattern.png");
- /*background-size: cover;*/
  background-repeat: no-repeat;
  height: 120px;
  margin: 5px;
