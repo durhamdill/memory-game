@@ -7,7 +7,7 @@ font-family: 'Slackey', cursive;*/
 
 /*----- STYLES FOR START SCREEN -----*/
 
-#start_screen h1 {
+#start_screen h1, #win_screen h1 {
   font-family: 'Luckiest Guy', cursive;
   color: white;
   font-size: 5em;
@@ -15,7 +15,7 @@ font-family: 'Slackey', cursive;*/
   margin-bottom: 10px;
 }
 
-#start_screen h2 {
+#start_screen h2, #win_screen p {
   color: gray;
   font-family: 'Raleway', sans-serif;
 }
@@ -24,11 +24,11 @@ font-family: 'Slackey', cursive;*/
   width: 80%;
 }
 
-#start_screen {
+#start_screen, #win_screen, #lose_screen {
   width: 100%;
   height: 100%;
   top: 0px;
-  background: #ADCFCF;
+  background-color: #ADCFCF;
   position: fixed;
   z-index: 100;
   text-align: center;
@@ -37,7 +37,18 @@ font-family: 'Slackey', cursive;*/
   align-items: center;
 }
 
-button {
+#win_screen, #lose_screen {
+  background-color: rgba(255, 255, 255, 0.8); /* 0.5 - semi-transparent */
+  visibility: hidden;
+}
+
+#win_box, #lose_box {
+  background-color: #ADCFCF;
+  border-radius: 5px;
+  padding: 0 15px 10px 15px;
+}
+
+button, a {
   font-size: 1.2em;
   color: gray;
   background-color: #FFFA8E;
@@ -47,10 +58,12 @@ button {
   font-family: 'Raleway', sans-serif;
 }
 
-.game_easy {
-  position: relative;
-  z-index: 1;
+#easy_button:hover, a:hover {
+  padding: 10px 15px;
+  background-color: gray;
+  color: white;
 }
+
 
 /*------ STYLES FOR GAME BOARD ------*/
 body {
@@ -60,6 +73,10 @@ body {
 
 header {
   text-align: center;
+}
+
+#game_easy {
+  /*visibility: hidden;*/
 }
 
 #game_easy h1 {

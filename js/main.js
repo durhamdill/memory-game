@@ -16,7 +16,6 @@ let startEasyGame = function() {
      var hour = Math.floor(totalSeconds /3600);
      var minute = Math.floor((totalSeconds - hour*3600)/60);
      var seconds = totalSeconds - (hour*3600 + minute*60);
-
      document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
   }
 }
@@ -35,9 +34,26 @@ let showLives = (array) => {
    hearts.innerHTML="Lives: " + lives;
 }
 
+// buttons/functions to play again; currently does not refresh to new game
+
+let playAgain = document.getElementById('play_again');
+let playAgain2 = document.getElementById('play_again2');
+
+let startOver = () => {
+  document.getElementById("start_screen").style.visibility = "visible"; //hide start screen
+  document.getElementById("win_screen").style.visibility = "hidden";
+}
+
+let startOver2 = () => {
+  document.getElementById("start_screen").style.visibility = "visible"; //hide start screen
+  document.getElementById("lose_screen").style.visibility = "hidden";
+}
+
 // add event listener to easy button on homepage:
 
 easyButton.addEventListener('click', startEasyGame, false);
+playAgain.addEventListener('click', startOver, false);
+playAgain2.addEventListener('click', startOver2, false);
 
 // create array of pairs for 4x4 easy board:
 
@@ -103,13 +119,16 @@ let checkFlipCard = function() {
     let win = function() {
 
       if (playerScore===16) {
-        alert("You win!");
+        // clearInterval(timerVar);
+        document.getElementById("win_screen").style.visibility = "visible";
+        document.getElementById("win_message").textContent = "You matched all eight sets of twins in " + playerTries + " tries.";
       }
     }
 
     let lose = function() {
       if (playerLivesEasy.length===0) {
-        alert("You lose!");
+        document.getElementById("lose_screen").style.visibility = "visible";
+        document.getElementById("lose_message").textContent = "You matched " + (playerScore/2) + " sets of twins in " + playerTries + " tries.";
       }
     }
 
