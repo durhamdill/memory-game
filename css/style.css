@@ -12,11 +12,16 @@ font-family: 'Slackey', cursive;*/
   color: white;
   font-size: 5em;
   text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+  margin-bottom: 10px;
 }
 
 #start_screen h2 {
   color: gray;
   font-family: 'Raleway', sans-serif;
+}
+
+#start_screen img {
+  width: 80%;
 }
 
 #start_screen {
@@ -72,6 +77,22 @@ header {
   padding: 5px;
 }
 
+#gamestats {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+}
+
+#hearts {
+  padding-left: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+#timer {
+  font-family: 'Raleway', sans-serif;
+  padding-right: 10px;
+}
+
 #memory_board {
  width: 550px;
  margin: 0px auto;
@@ -82,7 +103,7 @@ header {
 
 #memory_board > div {
  background: #03487B;
- background: url("./images/swirl_pattern.png");
+ background-image: url("https://durhamdill.files.wordpress.com/2017/08/swirl_pattern.png");
  /*background-size: cover;*/
  background-repeat: no-repeat;
  height: 120px;
