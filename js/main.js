@@ -1,43 +1,15 @@
+// ---------START SCREEN--------------
+
 // create buttons for start screen that will begin the game:
 
 let easyButton = document.getElementById('easy_button');
 let start_screen = document.getElementById('start_screen');
 
-// create function that launches the easy version of the game:
-
-let startEasyGame = function() {
-  document.getElementById("start_screen").style.visibility = "hidden"; //hide start screen
-  newBoardEasy(); //load easy game board
-  showLives(playerLivesEasy); //load easy lives
-  //counter code found here: https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
-  var timerVar = setInterval(countTimer, 1000); // start timer at load of game
-  var totalSeconds = 0;
-  function countTimer() {
-     ++totalSeconds;
-     var hour = Math.floor(totalSeconds /3600);
-     var minute = Math.floor((totalSeconds - hour*3600)/60);
-     var seconds = totalSeconds - (hour*3600 + minute*60);
-     document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
-  }
-}
-
 // add event listener to easy button on homepage:
 
 easyButton.addEventListener('click', startEasyGame, false);
 
-// create array to track player lives and a function to display them:
-let playerLivesEasy = [1,2,3,4,5,6,7,8,9,10]; //start with 10 lives
-let lives = ''; //empty string to update lives each turn
-
-let showLives = (array) => {
-  for (let x=0; x<array.length; x++) { //show hearts based on number of player lives
-    lives += `
-      <i class="fa fa-heart" aria-hidden="true"></i>
-    `;
-  }
-  console.log("Remaining lives: " + playerLivesEasy.length);
-  hearts.innerHTML="Lives: " + lives;
-}
+// -----------EASY GAME BOARD----------
 
 // create array of pairs for 4x4 easy board:
 
@@ -55,69 +27,19 @@ function shuffleArray(array) {
     return array;
 }
 
-// create variables to track progress of game:
+// create array to track player lives and a function to display them:
+let playerLivesEasy = [1,2,3,4,5,6,7,8,9,10]; //start with 10 lives
+let lives = ''; //empty string to update lives each turn
 
-let playerHand = [];
-let playerScore = 0;
-let playerTries = 0;
-
-// create function that reveals cards on click/pushes them to player's hand array:
-
-let checkFlipCard = function() {
-  if (playerHand.length===0) { //if no cards chosen, allow flip/reveal card
-    this.classList.remove("class", "hideImage");
-    this.classList.add("class", "showImage");
-    playerHand.push(this); //push first card to player hand for comparison
-  } else if (playerHand.length===1) { //if 1 card chosen, allow flip/reveal card
-      this.classList.remove("class", "hideImage");
-      this.classList.add("class", "showImage");
-      playerHand.push(this); //push second card to player hand for comparison
-      playerTries += 1; //add 1 to number of player turns
-      setTimeout(clearHand, 500); //run function to compare cards & reset hand; slight delay added so that player can see cards before turning back over
-    }
-    }
-
-    //function to compare cards for match and then clear hand/reset board for next round:
-
-    let clearHand = function() {
-      if (playerHand[0].innerHTML===playerHand[1].innerHTML) { //if cards in hand match
-        playerScore +=2; //player gets two points
-        console.log("Player got a match. Player score is " + playerScore + "/16 in " + playerTries + " tries."); //log progress to console for tracking
-        console.log("Remaining lives: " + playerLivesEasy.length);
-        playerHand.splice(0,2); //clear player hand for next round
-        win(); //run win script to see if game is won
-      } else {
-          console.log("Player did not get a match. Player score is " + playerScore + "/16 in " + playerTries + " tries."); //log progress to console for tracking
-          // console.log(document.getElementById('timer').innerHTML);
-          playerHand[0].classList.remove("class", "showImage"); //flip cards back over
-          playerHand[0].classList.add("class", "hideImage");
-          playerHand[1].classList.remove("class", "showImage");
-          playerHand[1].classList.add("class", "hideImage");
-          playerHand.splice(0,2); //clear player hand for next round
-          playerLivesEasy.pop(); //remove one player life
-          lives=''; //clear player lives so they can reset in loop
-          showLives(playerLivesEasy); //run loop to update number of lives that show
-          lose(); //check to see if player has lost
-          }
-    }
-
-    //check to see if player has won game:
-    let win = function() {
-
-      if (playerScore===16) {
-        document.getElementById("win_screen").style.visibility = "visible"; //if winner, show message
-        document.getElementById("win_message").textContent = "You matched 8/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + "/10 lives remaining.";
-      }
-    }
-
-    //check to see if player has lost game:
-    let lose = function() {
-      if (playerLivesEasy.length===0) { //if lost, show message
-        document.getElementById("lose_screen").style.visibility = "visible";
-        document.getElementById("lose_message").textContent = "You matched " + (playerScore/2) + "/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + "/10 lives remaining.";
-      }
-    }
-
+function showLives(array) {
+  for (let x=0; x<array.length; x++) { //show hearts based on remaining player lives
+    lives += `
+      <i class="fa fa-heart" aria-hidden="true"></i>
+    `;
+  }
+  console.log("Remaining lives: " + playerLivesEasy.length);
+  hearts.innerHTML="Lives: " + lives;
+}
 
 // create board for new game (easy version):
 
@@ -133,5 +55,88 @@ function newBoardEasy() {
     card.addEventListener('click', checkFlipCard,false);
     let board = document.getElementById("memory_board"); //push cards to game board
     board.appendChild(card);
+  }
+}
+
+// -------------PLAY EASY GAME----------------
+
+// create variables to track progress of game:
+
+let playerHand = [];
+let playerScore = 0;
+let playerTries = 0;
+
+// create function that launches the easy version of the game:
+
+function startEasyGame() {
+  document.getElementById("start_screen").style.visibility = "hidden"; //hide start screen
+  newBoardEasy(); //load easy game board
+  showLives(playerLivesEasy); //load easy lives
+  //counter code found here: https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
+  var timerVar = setInterval(countTimer, 1000); // start timer at load of game
+  var totalSeconds = 0;
+  function countTimer() {
+     ++totalSeconds;
+     var hour = Math.floor(totalSeconds /3600);
+     var minute = Math.floor((totalSeconds - hour*3600)/60);
+     var seconds = totalSeconds - (hour*3600 + minute*60);
+     document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
+  }
+}
+
+// create function that reveals cards on click/pushes them to player's hand array:
+
+function checkFlipCard() {
+  if (playerHand.length===0) { //if no cards chosen, allow flip/reveal card
+    this.classList.remove("class", "hideImage");
+    this.classList.add("class", "showImage");
+    playerHand.push(this); //push first card to player hand for comparison
+  } else if (playerHand.length===1) { //if 1 card chosen, allow flip/reveal card
+      this.classList.remove("class", "hideImage");
+      this.classList.add("class", "showImage");
+      playerHand.push(this); //push second card to player hand for comparison
+      playerTries += 1; //add 1 to number of player turns
+      setTimeout(clearHand, 500); //run function to compare cards & reset hand; slight delay added so that player can see cards before turning back over
+    }
+    }
+
+    //function to compare cards for match and then clear hand/reset board for next round:
+
+function clearHand() {
+  if (playerHand[0].innerHTML===playerHand[1].innerHTML) { //if cards in hand match
+    playerScore +=2; //player gets two points
+    console.log("Player got a match. Player score is " + playerScore + "/16 in " + playerTries + " tries."); //log progress to console for tracking
+    console.log("Remaining lives: " + playerLivesEasy.length);
+    playerHand.splice(0,2); //clear player hand for next round
+    win(); //run win script to see if game is won
+  } else {
+      console.log("Player did not get a match. Player score is " + playerScore + "/16 in " + playerTries + " tries."); //log progress to console for tracking
+      // console.log(document.getElementById('timer').innerHTML);
+      playerHand[0].classList.remove("class", "showImage"); //flip cards back over
+      playerHand[0].classList.add("class", "hideImage");
+      playerHand[1].classList.remove("class", "showImage");
+      playerHand[1].classList.add("class", "hideImage");
+      playerHand.splice(0,2); //clear player hand for next round
+      playerLivesEasy.pop(); //remove one player life
+      lives=''; //clear player lives so they can reset in loop
+      showLives(playerLivesEasy); //run loop to update number of lives that show
+      lose(); //check to see if player has lost
+      }
+}
+
+//check to see if player has won game:
+function win() {
+
+  if (playerScore===16) {
+    document.getElementById("win_screen").style.visibility = "visible"; //if winner, show message
+    document.getElementById("win_message").textContent = "You matched 8/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + " lives remaining.";
+  }
+}
+
+//check to see if player has lost game:
+function lose() {
+  if (playerLivesEasy.length===0) { //if lost, show message
+    document.getElementById("lose_screen").style.visibility = "visible";
+    document.getElementById("lose_message").textContent = "You matched " + (playerScore/2) + "/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + " lives remaining.";
   }
 }
