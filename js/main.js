@@ -106,7 +106,7 @@ let checkFlipCard = function() {
 
       if (playerScore===16) {
         document.getElementById("win_screen").style.visibility = "visible"; //if winner, show message
-        document.getElementById("win_message").textContent = "You matched 8/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + "/15 lives remaining.";
+        document.getElementById("win_message").textContent = "You matched 8/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + "/10 lives remaining.";
       }
     }
 
@@ -114,7 +114,7 @@ let checkFlipCard = function() {
     let lose = function() {
       if (playerLivesEasy.length===0) { //if lost, show message
         document.getElementById("lose_screen").style.visibility = "visible";
-        document.getElementById("lose_message").textContent = "You matched " + (playerScore/2) + "/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + "/15 lives remaining.";
+        document.getElementById("lose_message").textContent = "You matched " + (playerScore/2) + "/8 sets of twins in " + playerTries + " tries with " + playerLivesEasy.length + "/10 lives remaining.";
       }
     }
 
