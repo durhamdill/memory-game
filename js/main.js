@@ -9,6 +9,7 @@ let startEasyGame = function() {
   document.getElementById("start_screen").style.visibility = "hidden"; //hide start screen
   newBoardEasy(); //load easy game board
   showLives(playerLivesEasy); //load easy lives
+  //counter code found here: https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
   var timerVar = setInterval(countTimer, 1000); // start timer at load of game
   var totalSeconds = 0;
   function countTimer() {
